@@ -1,11 +1,11 @@
-UserInput: Jessica ayudo a hacer el marco, jorge ayudo aporto con una explicacion sobre como hacer las llamadas al sistema y entre todos la implementaron más cuando jorge hico un ejemplo para validarlo.
+UserInput: Jessica ayudo a hacer el marco, jorge ayudo aporto con una explicacion sobre como hacer las llamadas al sistema y entre todos la implementamos más cuando Jorge hizo un ejemplo para validarlo.
 
-AsciiInt: Brenda ayudo con el marco de la funcion, Etzel ayudo con la logica de como se debe realizar la operacion despues de que Jorge dio una explicacion sobre como hacer los recorrimientos necesarios para números mayores a un digito igual entre todos la implementaron.
+AsciiInt: Brenda ayudo con el marco de la funcion, Etzel ayudo con la logica de como se debe realizar la operacion despues de que Jorge dio una explicacion sobre como hacer los recorrimientos necesarios para números mayores a un digito. Igual entre todos la implementamos.
 
-Useroutput: Etzel ayudo haciendo el marco de la funcion, Jessica porpuso como se deberian de asignar las ariables a los registros para hacer un correcto llamado al sistema y verificamos con un ejemplo imprimiendo un hola mundo que prpopuso jessica.
+Useroutput: Etzel ayudo haciendo el marco de la funcion, Jessica propuso como se deberian de asignar las variables a los registros para hacer un correcto llamado al sistema. Etzel y Brenda verificamos con un ejemplo imprimiendo un hola mundo que prpopuso jessica.
 
-IntAscii: Jorge hizo el marco de la función, y Brenda fue la que se dio cuenta que para este proceso, unicamente se debe sumar un '0' para dar con el resultado.
+IntAscii: Jorge hizo el marco de la función y Brenda fue la que se dio cuenta que para este proceso, unicamente se debe sumar un '0' para dar con el resultado.
 
 ArrayAdd: Entre todos verificamos como pasar un archivo C a ensamblador y que no variara en este.
 
-Main: Entre todos hicimos diferentes implementaciones para poder pasar de manera correcta los argumentos de las funciones, sin embargo no llegamos a una correcta.
+Main: Entre todos hicimos diferentes implementaciones para poder pasar de manera correcta los argumentos de las funciones, sin embargo no llegamos a una correcta asignacion de argumentos y por lo tanto no logramos imprimir el resultado.
