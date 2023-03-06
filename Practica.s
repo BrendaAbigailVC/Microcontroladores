@@ -13,12 +13,10 @@
 	.text
 	.global	buffer
 .data
-	
 buffer:
-	.space	8
+	.skip	8
 buffer_out:
-	.space	8
-	
+	.skip	20
 
 	.text
 	.align	1
@@ -96,8 +94,8 @@ arrayAdd:
 	# epilogo
 	mov		r0, r3			@ return result
 	adds	r7, r7, #20		@ restauración del marco de main
-	mov		sp, r7			@regresa el valor original del stack pointer
-	pop		{r7}			@ regresa el valor orginal de r7
+	mov		sp, r7
+	pop		{r7}
 	bx		lr				@ regreso al main
 	.size	arrayAdd, .-arrayAdd
 
@@ -113,22 +111,22 @@ asciiInt:
 	@ args = 0, pretend = 0, frame = 8
 	@ frame_needed = 1, uses_anonymous_args = 0
 	@ link register save eliminated.
-	#Prologo 
+	#prologp 
 	push	{r7}  			@Creación del marco de asciiInt
 	sub	sp, sp, #12			@Ajusta el tamaño del marco
 	add	r7, sp, #0			@Actualiza el tamaño del marco
 
 	mov  r3, r0				
-	strb r3, [r7, #7]
-	ldrb r3, [r7, #7]
+	strb r3, [r7, #5]
+	ldrb r3, [r7, #5]
 	subs r3, r3, #48
 
 	#Epilogo 
-	mov r0, r3				@ return result
-	adds r7, r7, #12		@ restauración del marco de main
-	mov sp, r7 				@regresa el valor original del stack pointer
-	pop	{r7}				@ regresa el valor orginal de r7
-	bx	lr					@ regreso al main
+	mov r0, r3
+	adds r7, r7, #12
+	mov sp, r7 
+	pop	{r7}
+	bx	lr
 
 
 	.align	1
@@ -141,26 +139,21 @@ intAscii:
 	@ args = 0, pretend = 0, frame = 8
 	@ frame_needed = 1, uses_anonymous_args = 0
 	@ link register save eliminated.
-
-	# prologo
-	push	{r7}			@ creación del marco de intAscii
-	sub	sp, sp, #12			@Ajusta el tamaño del marco
-	add	r7, sp, #0			@Actualiza el tamaño del marco
-	
-	# cuerpo de la funcion
-	str	r0, [r7, #4]		
+	push	{r7}
+	sub	sp, sp, #12			@ creación del marco de intAscii
+	add	r7, sp, #0
+	str	r0, [r7, #4]
 	ldr	r3, [r7, #4]
 	uxtb	r3, r3
 	adds	r3, r3, #48
 	uxtb	r3, r3
 	
-	# epilogo
-	mov	r0, r3				@ return 
-	adds	r7, r7, #12		@ restauración del marco de main
-	mov	sp, r7				@regresa el valor original del stack pointer
-	pop	{r7}				@ regresa el valor orginal de r7
-	bx	lr					@ regreso al main
-
+	mov	r0, r3
+	adds	r7, r7, #12
+	mov	sp, r7
+	@ sp needed
+	pop	{r7}
+	bx	lr
 	.size	intAscii, .-intAscii
 
 
@@ -240,7 +233,7 @@ main:
 	mov	r0, r3
 	bl	arrayAdd
 	str	r0, [r7, #8]
-	movs	r2, #20
+	movs	r2, #2
 	ldr	r1, =buffer_out
 	ldr	r0, [r7, #8]
 	bl	intAscii
