@@ -3,7 +3,7 @@
 #### Integrantes:
 -
 -
--
+- Jessica Lara Cruz 
 - Brenda Abigail Valdes Crisanto
 #
 
