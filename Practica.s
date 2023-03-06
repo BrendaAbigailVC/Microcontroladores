@@ -12,20 +12,10 @@
 	.file	"Practica.c"
 
 .section .data
-num0:
-	.skip 8
-num1:
-	.skip 8
-num2:
-	.skip 8
-num3:
-	.skip 8
-num4:
-	.skip 8
-suma:
-	.skip 8
-//string: 
-	.asciz "Hola Mundooo\n"
+buffer:
+	.space	8
+buffer_out:
+	.space	8
 
 	.text
 	.align	1
@@ -217,105 +207,68 @@ userOutput:
 	.thumb_func
 	.type	main, %function
 main:
-	@ args = 0, pretend = 0, frame = 64
+	@ args = 0, pretend = 0, frame = 40
 	@ frame_needed = 1, uses_anonymous_args = 0
 	push	{r7, lr}
-	sub	sp, sp, #64
+	sub	sp, sp, #40
 	add	r7, sp, #0
-	ldr	r3, .L17
+	ldr	r3, .L19
 	ldr	r3, [r3]
-	str	r3, [r7, #60]
-	mov	r3, #0
-	//ldr	r0, [r7, #4]
-	ldr 	r1, =#6		@ --------carga de los argumentos de userInput
-	ldr 	r0, =num0	@---------------
-	bl	userInput
-	mov	r3, r0
-	str	r3, [r7, #40]
-	add	r3, r7, #40
-	mov	r0, r3
-	bl	asciiInt
-	str	r0, [r7, #8]
-	ldr	r3, [r7, #8]
-	str	r3, [r7, #20]
-	//ldr	r0, [r7, #4]
-	ldr 	r1, =#6		    @ --------carga de los argumentos de userInput
-	ldr 	r0, =num1	@---------------
-	bl	userInput
-	mov	r3, r0
-	str	r3, [r7, #44]
-	add	r3, r7, #40
-	mov	r0, r3
-	bl	asciiInt
-	str	r0, [r7, #8]
-	ldr	r3, [r7, #8]
-	str	r3, [r7, #24]
-	//ldr	r0, [r7, #4]
-	ldr 	r1, =#6		    @ --------carga de los argumentos de userInput
-	ldr 	r0, =num2	@---------------
-	bl	userInput
-	mov	r3, r0
-	str	r3, [r7, #48]
-	add	r3, r7, #40
-	mov	r0, r3
-	bl	asciiInt
-	str	r0, [r7, #8]
-	ldr	r3, [r7, #8]
-	str	r3, [r7, #28]
-	//ldr	r0, [r7, #4]
-	ldr 	r1, =#6		    @ --------carga de los argumentos de userInput
-	ldr 	r0, =num3	@---------------
-	bl	userInput
-	mov	r3, r0
-	str	r3, [r7, #52]
-	add	r3, r7, #40
-	mov	r0, r3
-	bl	asciiInt
-	str	r0, [r7, #8]
-	ldr	r3, [r7, #8]
-	str	r3, [r7, #32]
-	//ldr	r0, [r7, #4]
-	ldr 	r1, =#6		    @ --------carga de los argumentos de userInput
-	ldr 	r0, =num4	@---------------
-	bl	userInput
-	mov	r3, r0
-	str	r3, [r7, #56]
-	add	r3, r7, #40
-	mov	r0, r3
-	bl	asciiInt
-	str	r0, [r7, #8]
-	ldr	r3, [r7, #8]
 	str	r3, [r7, #36]
-	add	r3, r7, #20
+	mov	r3, #0
+	movs	r3, #0
+	str	r3, [r7, #4]
+	b	.L15
+.L16:
+	movs r1, #0x1
+	ldr	r0, =buffer
+	bl	userInput
+	str	r0, [r7, #12]
+	ldr	r1, [r7, #12]
+	ldr	r0, =buffer
+	bl	asciiInt
+	mov	r2, r0
+	ldr	r3, [r7, #4]
+	lsls	r3, r3, #2
+	adds	r3, r3, #40
+	add	r3, r3, r7
+	str	r2, [r3, #-24]
+	ldr	r3, [r7, #4]
+	adds	r3, r3, #1
+	str	r3, [r7, #4]
+.L15:
+	ldr	r3, [r7, #4]
+	cmp	r3, #4
+	ble	.L16
+	add	r3, r7, #16
 	mov	r0, r3
 	bl	arrayAdd
-	str	r0, [r7, #12]
-	ldr	r0, [r7, #12]
+	str	r0, [r7, #8]
+	movs	r2, #20
+	ldr	r1, =buffer_out
+	ldr	r0, [r7, #8]
 	bl	intAscii
-	str	r0, [r7, #16]
-	ldr	r0, [r7, #16]
-
-
-	ldr r1, =#20 @------------eeeee
-
+	str	r0, [r7, #12]
+	ldr	r1, [r7, #12]
+	ldr	r0, =buffer_out
 	bl	userOutput
 	movs	r3, #0
-	ldr	r2, .L17
+	ldr	r2, .L19
 	ldr	r1, [r2]
-	ldr	r2, [r7, #60]
+	ldr	r2, [r7, #36]
 	eors	r1, r2, r1
 	mov	r2, #0
-	beq	.L16
+	beq	.L18
 	bl	__stack_chk_fail
-.L16:
+.L18:
 	mov	r0, r3
-	adds	r7, r7, #64
+	adds	r7, r7, #40
 	mov	sp, r7
 	@ sp needed
 	pop	{r7, pc}
-.L18:
+.L20:
 	.align	2
-.L17:
+.L19:
 	.word	__stack_chk_guard
 	.size	main, .-main
 	.ident	"GCC: (Ubuntu 11.3.0-1ubuntu1~22.04) 11.3.0"
