@@ -10,12 +10,16 @@
 	.eabi_attribute 34, 1
 	.eabi_attribute 18, 4
 	.file	"Practica.c"
-
-.section .data
+	.text
+	.global	buffer
+.data
+	
 buffer:
 	.space	8
 buffer_out:
 	.space	8
+	
+
 
 	.text
 	.align	1
@@ -32,75 +36,26 @@ userInput:
 	push	{r7}			@ creación del marco de userInput
 	sub		sp, sp, #12		@ ajusta el tamaño del marco 
 	add		r7, sp, #0		@ actualiza el puntero del marco
-	str		r0, [r7]		@ resguardo de los argumentos
-	str 	r1, [r7, #4]	
+	str		r0, [r7]		@ resguarda la direccion base del buffer
+	str 	r1, [r7, #4]	@ resguarda el tamaño del buffer
 	# cuerpo de la funcion
-	ldr 	r2, [r7, #4]
-	ldr 	r1, [r7]
-	mov 	r0, #0			
-	mov 	r7, #3			@ carga de los argumentos de read
+	ldr 	r2, [r7, #4]	@ carga el tamaño del buffer
+	ldr 	r1, [r7]		@ carga la direccion base del buffer
+	mov 	r0, #0x0		@ indica el tipo de llamado STDIN
+	mov 	r7, #0X3		@ indica el llamado al sistema del tipo read
 	svc 	0x0				@ llamado al sistema
-	mov		r3, r0
-	add		r7, sp, #0
+	mov		r3, r0			@ guarda el numero leido en caracteres
+	add		r7, sp, #0		@ regresa r7 
 	# epilogo
 	mov		r0, r3			@ return 
-	adds	r7, r7, #12		@ restauración del marco de main
-	mov		sp, r7
-	pop	{r7}
-	bx	lr		
-	@ regreso a main
+	adds	r7, r7, #12		@ restauración del marco de userInput
+	mov		sp, r7			@ regresa el valor original del stack pointer
+	pop	{r7}				@ regresa el valor orginal de r7
+	bx	lr					@ regreso a main
 	.size	userInput, .-userInput
-	.align	1
-	.global	asciiInt
-	.syntax unified
-	.thumb
-	.thumb_func
-	.type	asciiInt, %function
-asciiInt:
-	@ args = 0, pretend = 0, frame = 16
-	@ frame_needed = 1, uses_anonymous_args = 0
-	@ link register save eliminated.
-	push	{r7}
-	sub	sp, sp, #20
-	add	r7, sp, #0
-	str	r0, [r7, #4]
-	movs	r3, #0
-	str	r3, [r7, #8]
-	movs	r3, #0
-	str	r3, [r7, #12]
-	b	.L4
-.L5:
-	ldr	r2, [r7, #8]
-	mov	r3, r2
-	lsls	r3, r3, #2
-	add	r3, r3, r2
-	lsls	r3, r3, #1
-	mov	r1, r3
-	ldr	r3, [r7, #12]
-	ldr	r2, [r7, #4]
-	add	r3, r3, r2
-	ldrb	r3, [r3]	@ zero_extendqisi2
-	add	r3, r3, r1
-	subs	r3, r3, #48
-	str	r3, [r7, #8]
-	ldr	r3, [r7, #12]
-	adds	r3, r3, #1
-	str	r3, [r7, #12]
-.L4:
-	ldr	r3, [r7, #12]
-	ldr	r2, [r7, #4]
-	add	r3, r3, r2
-	ldrb	r3, [r3]	@ zero_extendqisi2
-	cmp	r3, #0
-	bne	.L5
-	ldr	r3, [r7, #8]
-	mov	r0, r3
-	adds	r7, r7, #20
-	mov	sp, r7
-	@ sp needed
-	pop	{r7}
-	bx	lr
-	.size	asciiInt, .-asciiInt
+	
+    
+    
 	.align	1
 	.global	arrayAdd
 	.syntax unified
@@ -111,39 +66,72 @@ arrayAdd:
 	@ args = 0, pretend = 0, frame = 16
 	@ frame_needed = 1, uses_anonymous_args = 0
 	@ link register save eliminated.
-	push	{r7}
-	sub	sp, sp, #20
-	add	r7, sp, #0
-	str	r0, [r7, #4]
+	# prologo
+	push	{r7}			@ creación del marco de arrayAdd
+	sub		sp, sp, #20		@ ajusta el tamaño del marco 
+	add		r7, sp, #0		@ actualiza el puntero del marco
+	# cuerpo de la funcion
+	str		r0, [r7, #4]	@ resguardo de *array en la pila
 	movs	r3, #0
-	str	r3, [r7, #8]
+	str		r3, [r7, #8]	@ guardado de result en la pila
 	movs	r3, #0
-	str	r3, [r7, #12]
-	b	.L8
-.L9:
-	ldr	r3, [r7, #12]
+	str		r3, [r7, #12]	@ guardado de i en la pila
+	b		.L2				@ inicio del for
+.L3:
+	ldr		r3, [r7, #12]
 	lsls	r3, r3, #2
-	ldr	r2, [r7, #4]
-	add	r3, r3, r2
-	ldr	r3, [r3]
-	ldr	r2, [r7, #8]
-	add	r3, r3, r2
-	str	r3, [r7, #8]
-	ldr	r3, [r7, #12]
+	ldr		r2, [r7, #4]
+	add		r3, r3, r2
+	ldr		r3, [r3]
+	ldr		r2, [r7, #8]
+	add		r3, r3, r2
+	str		r3, [r7, #8]
+	ldr		r3, [r7, #12]
 	adds	r3, r3, #1
-	str	r3, [r7, #12]
-.L8:
-	ldr	r3, [r7, #12]
-	cmp	r3, #4
-	ble	.L9
-	ldr	r3, [r7, #8]
-	mov	r0, r3
-	adds	r7, r7, #20
-	mov	sp, r7
-	@ sp needed
+	str		r3, [r7, #12]
+.L2:
+	ldr		r3, [r7, #12]
+	cmp		r3, #4
+	ble		.L3				@ salto dentro del for
+	ldr		r3, [r7, #8]
+	# epilogo
+	mov		r0, r3			@ return result
+	adds	r7, r7, #20		@ restauración del marco de main
+	mov		sp, r7
+	pop		{r7}
+	bx		lr				@ regreso al main
+	.size	arrayAdd, .-arrayAdd
+
+
+
+	.text
+	.global	asciiInt
+	.syntax unified
+	.thumb
+	.thumb_func
+	.type	asciiInt, %function
+asciiInt:
+	@ args = 0, pretend = 0, frame = 8
+	@ frame_needed = 1, uses_anonymous_args = 0
+	@ link register save eliminated.
+	#prologp 
+	push	{r7}  			@Creación del marco de asciiInt
+	sub	sp, sp, #12			@Ajusta el tamaño del marco
+	add	r7, sp, #0			@Actualiza el tamaño del marco
+
+	mov  r3, r0				
+	strb r3, [r7, #7]
+	ldrb r3, [r7, #7]
+	subs r3, r3, #48
+
+	#Epilogo 
+	mov r0, r3
+	adds r7, r7, #12
+	mov sp, r7 
 	pop	{r7}
 	bx	lr
-	.size	arrayAdd, .-arrayAdd
+
+
 	.align	1
 	.global	intAscii
 	.syntax unified
@@ -155,13 +143,15 @@ intAscii:
 	@ frame_needed = 1, uses_anonymous_args = 0
 	@ link register save eliminated.
 	push	{r7}
-	sub	sp, sp, #12
+	sub	sp, sp, #12			@ creación del marco de intAscii
 	add	r7, sp, #0
+	
 	str	r0, [r7, #4]
 	ldr	r3, [r7, #4]
 	uxtb	r3, r3
 	adds	r3, r3, #48
 	uxtb	r3, r3
+	
 	mov	r0, r3
 	adds	r7, r7, #12
 	mov	sp, r7
@@ -169,6 +159,8 @@ intAscii:
 	pop	{r7}
 	bx	lr
 	.size	intAscii, .-intAscii
+
+
 	.align	1
 	.global	userOutput
 	.syntax unified
@@ -183,23 +175,24 @@ userOutput:
 	push	{r7}			@ creación del marco de userOutput
 	sub		sp, sp, #12		@ ajusta el tamaño del marco 
 	add		r7, sp, #0		@ actualiza el puntero del marco
-	str		r0, [r7]		@ resguarda de los argumentos
-	str 	r1, [r7, #4]
+	str		r0, [r7]		@ resguarda la direccion base del buffer
+	str 	r1, [r7, #4]	@ resguarda el tamaño del buffer
 	# cuerpo de la funcion
-	ldr 	r2, [r7, #4]	
-	ldr 	r1, [r7]
-	mov 	r0, #0x1
-	mov 	r7, #0x4		@ carga de los argumentos de write
+	ldr 	r2, [r7, #4]	@ carga el tamaño del buffer
+	ldr 	r1, [r7]		@ carga la direccion base del buffer
+	mov 	r0, #0x1		@ indica el tipo de llamado STDOUT
+	mov 	r7, #0x4		@ indica el llamado al sistema del tipo write
 	svc 	0x0				@ llamado al sistema
-	mov		r3, r0
-	add		r7, sp, #0
+	mov		r3, r0			@ guarda el numero leido en caracteres
+	add		r7, sp, #0		@ regresa r7 
     # epilogo 
-	mov		r0, r3			@ return 
-	adds	r7, r7, # 12	@ restauración del marco de main
-	mov		sp, r7
-	pop		{r7}
-	bx		lr				@ regreso a main
+	mov		r0, r3			@ return
+	adds	r7, r7, # 12	@ restauración del marco de userOutput
+	mov		sp, r7			@ regresa el valor original del stack pointer
+	pop		{r7}			@ regresa el valor orginal de r7
+	bx		lr				@ regresa a main
 	.size	userOutput, .-userOutput
+
 	.align	1
 	.global	main
 	.syntax unified
