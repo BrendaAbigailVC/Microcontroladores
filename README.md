@@ -8,7 +8,7 @@
 #
 
 En esta practica se hace la implementacion de un programa codificado en lenguaje ensamblador ARMV7
-Se crearan cinco funciones en  el programa las cueles son :
+Se crean cinco funciones en el programa las cuales son :
 
 * userInput: La cual realiza una llamada al sistema por medio de los argumentos de read, para que el usuario pueda ingresar los elementos del arreglo.
 
