@@ -1,6 +1,11 @@
 # Microcontroladores
-**Practica 2**
-
+## **Practica 2**
+#### Integrantes:
+-
+-
+-
+- Brenda Abigail Valdes Crisanto
+#
 
 En esta practica se hace la implementacion de un programa codificado en lenguaje ensamblador ARMV7
 Se crearan cinco funciones en  el programa las cueles son :
