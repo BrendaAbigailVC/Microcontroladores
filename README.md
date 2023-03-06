@@ -2,7 +2,7 @@
 ## **Practica 2**
 #### Integrantes:
 - Garcia Delgado Miguel Etzel
--
+- Jiménez Barrera Jorge Francisco
 - Lara Cruz Jessica 
 - Valdes Crisanto Brenda Abigail
 #
@@ -12,13 +12,13 @@ Se crearan cinco funciones en  el programa las cueles son :
 
 * userInput: La cual realiza una llamada al sistema por medio de los argumentos de read, para que el usuario pueda ingresar los elementos del arreglo.
 
-* asciiInt:
+* asciiInt: Función que recibe un caracter (número en Ascii) y lo convierete a un entero restandole '0'.
 
 * arrayAdd: Hará la suma de los elementos de un arreglo con un tamaño de 5, donde la suma de dichos valores se guadara en una variable result.
 
-* intAscii:
+* intAscii: Función que recibe un entero a traves de la variable result y lo pasa a un caracter (Ascii) sumandole '0'.
 
-* userOutput:
+* userOutput: Realiza una llamada el sistema por medio de los argumentos de write, para que se imprima en la terminal una vez que ya fue pasado de entero a ascii.
 
 #
 Compilación
