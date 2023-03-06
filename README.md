@@ -39,5 +39,7 @@ Marcos de las funciones implementadas:
 
 ![image](https://user-images.githubusercontent.com/110583656/223007883-63b45c48-4739-4bfb-834a-47d4cd2abd1b.png)
 
+![image](https://user-images.githubusercontent.com/110583656/223023143-17894bdc-6b7a-4f8a-9bc1-592c8fdeebf6.png)
+
 
 
