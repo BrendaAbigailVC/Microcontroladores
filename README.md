@@ -21,8 +21,7 @@ userOutput:
 
 Marcos de las funciones implementadas:
 
-
-![image](https://user-images.githubusercontent.com/110583656/223007631-cbc0421f-fcfe-434b-91a1-6780071a6393.png)
+![image](https://user-images.githubusercontent.com/110583656/223008277-65319ca2-b229-46eb-a2b5-bc126f191f46.png)
 
 ![image](https://user-images.githubusercontent.com/110583656/223007699-febc7ab7-5286-417a-abf7-f5f40d741579.png)
 
