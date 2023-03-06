@@ -20,6 +20,17 @@ userOutput:
 
 
 Marcos de las funciones implementadas:
-![image](https://user-images.githubusercontent.com/110583656/223007562-661ee3b3-ed5c-4de8-8160-4c4d045dc6b8.png)
+
+
+![image](https://user-images.githubusercontent.com/110583656/223007631-cbc0421f-fcfe-434b-91a1-6780071a6393.png)
+
+![image](https://user-images.githubusercontent.com/110583656/223007699-febc7ab7-5286-417a-abf7-f5f40d741579.png)
+
+![image](https://user-images.githubusercontent.com/110583656/223007765-4d915c90-a07b-40ba-b4e6-e1fccfd6f304.png)
+
+![image](https://user-images.githubusercontent.com/110583656/223007823-fe1e485f-0c98-49e8-a0fb-3dee4530699c.png)
+
+![image](https://user-images.githubusercontent.com/110583656/223007883-63b45c48-4739-4bfb-834a-47d4cd2abd1b.png)
+
 
 
