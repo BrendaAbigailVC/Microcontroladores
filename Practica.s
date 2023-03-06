@@ -10,8 +10,7 @@
 	.eabi_attribute 34, 1
 	.eabi_attribute 18, 4
 	.file	"Practica.c"
-	.text
-	.global	buffer
+	
 .data
 buffer:
 	.skip	8
