@@ -20,7 +20,6 @@ buffer_out:
 	.space	8
 	
 
-
 	.text
 	.align	1
 	.global	userInput
@@ -97,8 +96,8 @@ arrayAdd:
 	# epilogo
 	mov		r0, r3			@ return result
 	adds	r7, r7, #20		@ restauración del marco de main
-	mov		sp, r7
-	pop		{r7}
+	mov		sp, r7			@regresa el valor original del stack pointer
+	pop		{r7}			@ regresa el valor orginal de r7
 	bx		lr				@ regreso al main
 	.size	arrayAdd, .-arrayAdd
 
@@ -114,7 +113,7 @@ asciiInt:
 	@ args = 0, pretend = 0, frame = 8
 	@ frame_needed = 1, uses_anonymous_args = 0
 	@ link register save eliminated.
-	#prologp 
+	#Prologo 
 	push	{r7}  			@Creación del marco de asciiInt
 	sub	sp, sp, #12			@Ajusta el tamaño del marco
 	add	r7, sp, #0			@Actualiza el tamaño del marco
@@ -125,11 +124,11 @@ asciiInt:
 	subs r3, r3, #48
 
 	#Epilogo 
-	mov r0, r3
-	adds r7, r7, #12
-	mov sp, r7 
-	pop	{r7}
-	bx	lr
+	mov r0, r3				@ return result
+	adds r7, r7, #12		@ restauración del marco de main
+	mov sp, r7 				@regresa el valor original del stack pointer
+	pop	{r7}				@ regresa el valor orginal de r7
+	bx	lr					@ regreso al main
 
 
 	.align	1
@@ -142,22 +141,26 @@ intAscii:
 	@ args = 0, pretend = 0, frame = 8
 	@ frame_needed = 1, uses_anonymous_args = 0
 	@ link register save eliminated.
-	push	{r7}
-	sub	sp, sp, #12			@ creación del marco de intAscii
-	add	r7, sp, #0
+
+	# prologo
+	push	{r7}			@ creación del marco de intAscii
+	sub	sp, sp, #12			@Ajusta el tamaño del marco
+	add	r7, sp, #0			@Actualiza el tamaño del marco
 	
-	str	r0, [r7, #4]
+	# cuerpo de la funcion
+	str	r0, [r7, #4]		
 	ldr	r3, [r7, #4]
 	uxtb	r3, r3
 	adds	r3, r3, #48
 	uxtb	r3, r3
 	
-	mov	r0, r3
-	adds	r7, r7, #12
-	mov	sp, r7
-	@ sp needed
-	pop	{r7}
-	bx	lr
+	# epilogo
+	mov	r0, r3				@ return 
+	adds	r7, r7, #12		@ restauración del marco de main
+	mov	sp, r7				@regresa el valor original del stack pointer
+	pop	{r7}				@ regresa el valor orginal de r7
+	bx	lr					@ regreso al main
+
 	.size	intAscii, .-intAscii
 
 
