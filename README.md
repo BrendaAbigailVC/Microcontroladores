@@ -1,10 +1,10 @@
 # Microcontroladores
 ## **Practica 2**
 #### Integrantes:
+- Garcia Delgado Miguel Etzel
 -
--
-- Jessica Lara Cruz 
-- Brenda Abigail Valdes Crisanto
+- Lara Cruz Jessica 
+- Valdes Crisanto Brenda Abigail
 #
 
 En esta practica se hace la implementacion de un programa codificado en lenguaje ensamblador ARMV7
