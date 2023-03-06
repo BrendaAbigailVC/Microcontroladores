@@ -10,15 +10,15 @@
 En esta practica se hace la implementacion de un programa codificado en lenguaje ensamblador ARMV7
 Se crearan cinco funciones en  el programa las cueles son :
 
-* userInput: La cual realiza una llamada al sistema por medio de los argumentos de read, para que el usuario pueda ingresar los elementos del arreglo.
+* userInput: Función que realiza una llamada al sistema para la lectura de una cádena de caracteres. Recibe como argumentos el espacio de memoria donde será guardado y la cantidad de bytes que podrán ser leídos. Regresa la cantidad de caracteres que poseé la cadena.
 
-* asciiInt: Función que recibe un caracter (número en Ascii) y lo convierete a un entero restandole '0'.
+* asciiInt: Función que convierte una cadena de caracteres a un entero sin signo. Recibe como argumentos el espacio de memoria donde se encuentra la cadena de caracteres y la cantidad de caracteres que poseé. Regresa el número entero correspondiente.
 
-* arrayAdd: Hará la suma de los elementos de un arreglo con un tamaño de 5, donde la suma de dichos valores se guadara en una variable result.
+* arrayAdd: Función que suma los elementos de un arreglo. Recibe como argumento la direccion de memoria donde inicia el arreglo. Regresa el resultado de la suma.
 
-* intAscii: Función que recibe un entero a traves de la variable result y lo pasa a un caracter (Ascii) sumandole '0'.
+* intAscii: Función que convierte un entero sin signo a una cadena de caracteres. Recibe como argumentos la dirección de memoria de la suma de los elementos del arreglo y el espacio de memoria donde se guardará la cadena de caracteres. Regresa la cantidad de caracteres que poseé la cadena.
 
-* userOutput: Realiza una llamada el sistema por medio de los argumentos de write, para que se imprima en la terminal una vez que ya fue pasado de entero a ascii.
+* userOutput: Función que realiza una llamada al sistema para la escritura de una cádena de caracteres. Recibe como argumentos el espacio de memoria donde se encuentra la cadena de caracteres y la cantidad de caracteres que poseé. No regresa nada.
 
 #
 Compilación
