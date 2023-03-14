@@ -29,17 +29,17 @@ Compilación
 #
 Marcos de las funciones implementadas:
 
-![image](https://user-images.githubusercontent.com/110583656/223008277-65319ca2-b229-46eb-a2b5-bc126f191f46.png)
+<img width="238" alt="1" src="https://user-images.githubusercontent.com/109320578/224905897-cc3a08e6-b606-479f-af88-c833f3e59f07.png">
 
-![image](https://user-images.githubusercontent.com/110583656/223007699-febc7ab7-5286-417a-abf7-f5f40d741579.png)
+<img width="224" alt="2" src="https://user-images.githubusercontent.com/109320578/224905926-9b31c5ac-cb04-49a4-a269-fc9d84927338.png">
 
-![image](https://user-images.githubusercontent.com/110583656/223007765-4d915c90-a07b-40ba-b4e6-e1fccfd6f304.png)
+<img width="201" alt="3" src="https://user-images.githubusercontent.com/109320578/224905959-a4e4da01-0a7d-46a8-8d5c-8c16a9f81835.png">
 
-![image](https://user-images.githubusercontent.com/110583656/223007823-fe1e485f-0c98-49e8-a0fb-3dee4530699c.png)
+<img width="209" alt="4" src="https://user-images.githubusercontent.com/109320578/224905969-e2a683b8-35bf-4f45-bdd5-45609c31d021.png">
 
-![image](https://user-images.githubusercontent.com/110583656/223007883-63b45c48-4739-4bfb-834a-47d4cd2abd1b.png)
+<img width="234" alt="5" src="https://user-images.githubusercontent.com/109320578/224905992-72f69deb-949d-426a-99d3-6c4e182d34ed.png">
 
-![image](https://user-images.githubusercontent.com/110583656/223023143-17894bdc-6b7a-4f8a-9bc1-592c8fdeebf6.png)
+<img width="235" alt="6" src="https://user-images.githubusercontent.com/109320578/224906008-fbe61af9-6a50-431a-8ce1-a412c83dd193.png">
 
 
 
