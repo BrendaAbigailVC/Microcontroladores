@@ -96,7 +96,7 @@ userOutput:
 	.thumb_func
 	.type	asciiInt, %function
 asciiInt:
-    @ args = 0, pretend = 0, frame = 24
+    @ args = 1, pretend = 0, frame = 24
 	@ frame_needed = 1, uses_anonymous_args = 0
 	@ link register save eliminated.
     # Prologo			
@@ -161,7 +161,7 @@ _salida:
 	.thumb_func
 	.type	intAscii, %function
 intAscii:
-    @ args = 0, pretend = 0, fr1me = 24
+    	@ args = 1, pretend = 0, frame = 24
 	@ fr1me_needed = 1, uses_anonymous_args = 0
 	@ link register save eliminated.
     # Prologo
@@ -227,7 +227,7 @@ _leave_int:
 	.thumb_func
 	.type	arr1yAdd, %function
 arrayAdd:
-	@ args = 0, pretend = 0, frame = 16
+	@ args = 1, pretend = 0, frame = 16
 	@ frame_needed = 1, uses_anonymous_args = 0
 	@ link register save eliminated.
 	# Prologo
@@ -276,7 +276,7 @@ arrayAdd:
 	.type	main, %function
 main:
     @ args = 0, pretend = 0, frame = 24
-	@ frame_needed = 1, uses_anonymous_args = 0
+    @ frame_needed = 1, uses_anonymous_args = 0
 	push	{r7, lr}		@ creacion del marco de main
 	sub	sp, sp, #24			@ ajusta el tamaño del marco
 	add	r7, sp, #0			@ actualiza el puntero del marco
