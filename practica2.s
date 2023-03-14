@@ -101,7 +101,7 @@ asciiInt:
 	@ link register save eliminated.
     # Prologo			
 	push	{r7}				@ creación del marco de asciiInt
-	sub		sp, sp, #24			@ ajusta el tamaño del marco 
+	sub		sp, sp, #28			@ ajusta el tamaño del marco 
 	add		r7, sp, #0			@ actualiza el puntero del marco
 	
     # Cuerpo de la funcion
@@ -148,7 +148,7 @@ _contador:
 _salida:
 	mov 	r3, r4
     mov 	r0, r3			@ return
-	adds	r7, r7, #24		@ restauración del marco de main
+	adds	r7, r7, #28		@ restauración del marco de main
 	mov		sp, r7			@ regresa el valor original del stack pointer
 	pop	{r7}				@ regresa el valor orginal de r7
 	bx	lr					@ regresa al main
@@ -166,7 +166,7 @@ intAscii:
 	@ link register save eliminated.
     # Prologo
 	push	{r7}			@ creación del marco de intAscii
-	sub	sp, sp, #24		@ ajusta el tamaño del marco
+	sub	sp, sp, #28		@ ajusta el tamaño del marco
 	add	r7, sp, #0			@ actualiza el puntero del marco
     # Cuerpo de la funcion
 	mov r3, r0        	
@@ -212,7 +212,7 @@ _leave_int:
     add 	r6, r6, #1
     strb 	r4, [r6]
     # epilogo
-	adds	r7, r7, #24		@ restaur1ción del marco de userOutput
+	adds	r7, r7, #28		@ restaur1ción del marco de userOutput
 	mov		sp, r7			@ regresa el valor original del stack pointer
 	@ sp needed				
 	pop	{r7}				@ regresa el valor orginal de r7
